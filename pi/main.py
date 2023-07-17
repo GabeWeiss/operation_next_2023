@@ -57,7 +57,6 @@ GPIO.output(PIN_SUCCESS_POS, GPIO.HIGH)
 # that's acceptable.
 GPIO.output(PIN_BUZZER_CONTROL, GPIO.LOW)
 
-
 # In order to be sure all our pins have cleared setup, since
 # a few of them start high or floating, we want to be sure
 # we don't accidentally trigger any behaviors on startup
