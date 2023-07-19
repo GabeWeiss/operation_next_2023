@@ -65,12 +65,13 @@ try:
                 active_time = -1
                 continue
 
-        if (GPIO.input(operation.PIN_PIECE_0)):
+        if (GPIO.input(operation.PIN_PULLED_MUSCLE)):
             operation.activate_buzzer()
             # Sanity check, if this happens, we're probably
             # in a bad state. Reset, log and continue
-            if active_pin != operation.PIN_PIECE_0:
-                logging.CRITICAL(f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {PIN_PIECE_0}")
+            if active_pin != operation.PIN_PULLED_MUSCLE:
+                msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_PULLED_MUSCLE}"
+                logging.CRITICAL(msg)
                 active_pin = -1
                 active_time = -1
                 continue
@@ -78,10 +79,212 @@ try:
             # If we're here, it means this is the first time seeing
             # this pin trigger, so set the active pin and active time
             # so we don't repeat trigger a message
-            active_pin = operation.PIN_PIECE_0
+            active_pin = operation.PIN_PULLED_MUSCLE
             active_time = cur_time
-            send_pubsub_msg(operation.PIN_PIECE_0)
+            send_pubsub_msg(operation.PIN_PULLED_MUSCLE)
+        elif (GPIO.input(operation.PIN_SPARE_RIBS)):
+            operation.activate_buzzer()
+            # Sanity check, if this happens, we're probably
+            # in a bad state. Reset, log and continue
+            if active_pin != operation.PIN_SPARE_RIBS:
+                msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_SPARE_RIBS}"
+                logging.CRITICAL(msg)
+                active_pin = -1
+                active_time = -1
+                continue
 
+            # If we're here, it means this is the first time seeing
+            # this pin trigger, so set the active pin and active time
+            # so we don't repeat trigger a message
+            active_pin = operation.PIN_SPARE_RIBS
+            active_time = cur_time
+            send_pubsub_msg(operation.PIN_SPARE_RIBS)
+        elif (GPIO.input(operation.PIN_WRITERS_CRAMP)):
+            operation.activate_buzzer()
+            # Sanity check, if this happens, we're probably
+            # in a bad state. Reset, log and continue
+            if active_pin != operation.PIN_WRITERS_CRAMP:
+                msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_WRITERS_CRAMP}"
+                logging.CRITICAL(msg)
+                active_pin = -1
+                active_time = -1
+                continue
+
+            # If we're here, it means this is the first time seeing
+            # this pin trigger, so set the active pin and active time
+            # so we don't repeat trigger a message
+            active_pin = operation.PIN_WRITERS_CRAMP
+            active_time = cur_time
+            send_pubsub_msg(operation.PIN_WRITERS_CRAMP)
+        elif (GPIO.input(operation.PIN_CHARLIE_HORSE)):
+            operation.activate_buzzer()
+            # Sanity check, if this happens, we're probably
+            # in a bad state. Reset, log and continue
+            if active_pin != operation.PIN_CHARLIE_HORSE:
+                msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_CHARLIE_HORSE}"
+                logging.CRITICAL(msg)
+                active_pin = -1
+                active_time = -1
+                continue
+
+            # If we're here, it means this is the first time seeing
+            # this pin trigger, so set the active pin and active time
+            # so we don't repeat trigger a message
+            active_pin = operation.PIN_CHARLIE_HORSE
+            active_time = cur_time
+            send_pubsub_msg(operation.PIN_CHARLIE_HORSE)
+        elif (GPIO.input(operation.PIN_BUTTERFLIES_IN_THE_STOMACH)):
+            operation.activate_buzzer()
+            # Sanity check, if this happens, we're probably
+            # in a bad state. Reset, log and continue
+            if active_pin != operation.PIN_BUTTERFLIES_IN_THE_STOMACH:
+                msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_BUTTERFLIES_IN_THE_STOMACH}"
+                logging.CRITICAL(msg)
+                active_pin = -1
+                active_time = -1
+                continue
+
+            # If we're here, it means this is the first time seeing
+            # this pin trigger, so set the active pin and active time
+            # so we don't repeat trigger a message
+            active_pin = operation.PIN_BUTTERFLIES_IN_THE_STOMACH
+            active_time = cur_time
+            send_pubsub_msg(operation.PIN_BUTTERFLIES_IN_THE_STOMACH)
+        elif (GPIO.input(operation.PIN_BROKEN_HEART)):
+            operation.activate_buzzer()
+            # Sanity check, if this happens, we're probably
+            # in a bad state. Reset, log and continue
+            if active_pin != operation.PIN_BROKEN_HEART:
+                msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_BROKEN_HEART}"
+                logging.CRITICAL(msg)
+                active_pin = -1
+                active_time = -1
+                continue
+
+            # If we're here, it means this is the first time seeing
+            # this pin trigger, so set the active pin and active time
+            # so we don't repeat trigger a message
+            active_pin = operation.PIN_BROKEN_HEART
+            active_time = cur_time
+            send_pubsub_msg(operation.PIN_BROKEN_HEART)
+        elif (GPIO.input(operation.PIN_WRENCHED_ANKLE)):
+            operation.activate_buzzer()
+            # Sanity check, if this happens, we're probably
+            # in a bad state. Reset, log and continue
+            if active_pin != operation.PIN_WRENCHED_ANKLE:
+                msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_WRENCHED_ANKLE}"
+                logging.CRITICAL(msg)
+                active_pin = -1
+                active_time = -1
+                continue
+
+            # If we're here, it means this is the first time seeing
+            # this pin trigger, so set the active pin and active time
+            # so we don't repeat trigger a message
+            active_pin = operation.PIN_WRENCHED_ANKLE
+            active_time = cur_time
+            send_pubsub_msg(operation.PIN_WRENCHED_ANKLE)
+        elif (GPIO.input(operation.PIN_ADAMS_APPLE)):
+            operation.activate_buzzer()
+            # Sanity check, if this happens, we're probably
+            # in a bad state. Reset, log and continue
+            if active_pin != operation.PIN_ADAMS_APPLE:
+                msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_ADAMS_APPLE}"
+                logging.CRITICAL(msg)
+                active_pin = -1
+                active_time = -1
+                continue
+
+            # If we're here, it means this is the first time seeing
+            # this pin trigger, so set the active pin and active time
+            # so we don't repeat trigger a message
+            active_pin = operation.PIN_ADAMS_APPLE
+            active_time = cur_time
+            send_pubsub_msg(operation.PIN_ADAMS_APPLE)
+        elif (GPIO.input(operation.PIN_FUNNY_BONE)):
+            operation.activate_buzzer()
+            # Sanity check, if this happens, we're probably
+            # in a bad state. Reset, log and continue
+            if active_pin != operation.PIN_FUNNY_BONE:
+                msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_FUNNY_BONE}"
+                logging.CRITICAL(msg)
+                active_pin = -1
+                active_time = -1
+                continue
+
+            # If we're here, it means this is the first time seeing
+            # this pin trigger, so set the active pin and active time
+            # so we don't repeat trigger a message
+            active_pin = operation.PIN_FUNNY_BONE
+            active_time = cur_time
+            send_pubsub_msg(operation.PIN_FUNNY_BONE)
+        elif (GPIO.input(operation.PIN_WATER_ON_THE_KNEE)):
+            operation.activate_buzzer()
+            # Sanity check, if this happens, we're probably
+            # in a bad state. Reset, log and continue
+            if active_pin != operation.PIN_WATER_ON_THE_KNEE:
+                msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_WATER_ON_THE_KNEE}"
+                logging.CRITICAL(msg)
+                active_pin = -1
+                active_time = -1
+                continue
+
+            # If we're here, it means this is the first time seeing
+            # this pin trigger, so set the active pin and active time
+            # so we don't repeat trigger a message
+            active_pin = operation.PIN_WATER_ON_THE_KNEE
+            active_time = cur_time
+            send_pubsub_msg(operation.PIN_WATER_ON_THE_KNEE)
+        elif (GPIO.input(operation.PIN_WISH_BONE)):
+            operation.activate_buzzer()
+            # Sanity check, if this happens, we're probably
+            # in a bad state. Reset, log and continue
+            if active_pin != operation.PIN_WISH_BONE:
+                msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_WISH_BONE}"
+                logging.CRITICAL(msg)
+                active_pin = -1
+                active_time = -1
+                continue
+
+            # If we're here, it means this is the first time seeing
+            # this pin trigger, so set the active pin and active time
+            # so we don't repeat trigger a message
+            active_pin = operation.PIN_WISH_BONE
+            active_time = cur_time
+            send_pubsub_msg(operation.PIN_WISH_BONE)
+        elif (GPIO.input(operation.PIN_BREAD_BASKET)):
+            operation.activate_buzzer()
+            # Sanity check, if this happens, we're probably
+            # in a bad state. Reset, log and continue
+            if active_pin != operation.PIN_BREAD_BASKET:
+                msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_BREAD_BASKET}"
+                logging.CRITICAL(msg)
+                active_pin = -1
+                active_time = -1
+                continue
+
+            # If we're here, it means this is the first time seeing
+            # this pin trigger, so set the active pin and active time
+            # so we don't repeat trigger a message
+            active_pin = operation.PIN_BREAD_BASKET
+            active_time = cur_time
+            send_pubsub_msg(operation.PIN_BREAD_BASKET)
+        elif (GPIO.input(operation.PIN_SUCCESS_INPUT)):
+            # Sanity check, if this happens, we're probably
+            # in a bad state. Reset, log and continue
+            if active_pin != operation.PIN_SUCCESS_INPUT:
+                msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_SUCCESS_INPUT}"
+                logging.CRITICAL(msg)
+                active_pin = -1
+                active_time = -1
+                continue
+
+            # If we're here, it means this is the first time seeing
+            # this pin trigger, so set the active pin and active time
+            # so we don't repeat trigger a message
+            active_pin = operation.PIN_SUCCESS_INPUT
+            active_time = cur_time
+            send_pubsub_msg(operation.PIN_SUCCESS_INPUT)
 
 except KeyboardInterrupt:
     print("Qutting")

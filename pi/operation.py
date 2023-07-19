@@ -1,5 +1,40 @@
 import RPi.GPIO as GPIO
 
+# TODO: need to map pieces to pins accurately. The following
+# are not accurate yet.
+PIN_PULLED_MUSCLE               = 0
+PIN_SPARE_RIBS                  = 4
+PIN_WRITERS_CRAMP               = 5
+PIN_CHARLIE_HORSE               = 6
+PIN_BUTTERFLIES_IN_THE_STOMACH  = 7
+PIN_BROKEN_HEART                = 8
+PIN_WRENCHED_ANKLE              = 9
+PIN_ADAMS_APPLE                 = 10
+PIN_FUNNY_BONE                  = 11
+PIN_WATER_ON_THE_KNEE           = 12
+PIN_WISH_BONE                   = 14
+PIN_BREAD_BASKET                = 15
+
+Piece_Names = {}
+Piece_Names[PIN_PULLED_MUSCLE]              = "Pulled Muscle"
+Piece_Names[PIN_SPARE_RIBS]                 = "Spare Ribs"
+Piece_Names[PIN_WRITERS_CRAMP]              = "Writer's Cramp"
+Piece_Names[PIN_CHARLIE_HORSE]              = "Charlie Horse"
+Piece_Names[PIN_BUTTERFLIES_IN_THE_STOMACH] = "Butterflies in the Stomach"
+Piece_Names[PIN_BROKEN_HEART]               = "Broken Heart"
+Piece_Names[PIN_WRENCHED_ANKLE]             = "Wrenched Ankle"
+Piece_Names[PIN_ADAMS_APPLE]                = "Adam's Apple"
+Piece_Names[PIN_FUNNY_BONE]                 = "Funny Bone"
+Piece_Names[PIN_WATER_ON_THE_KNEE]          = "Water on the Knee"
+Piece_Names[PIN_WISH_BONE]                  = "Wish Bone"
+Piece_Names[PIN_BREAD_BASKET]               = "Bread Basket"
+
+def pin_to_name(pin):
+    try:
+        return Piece_Names[pin]
+    except:
+        return None
+
 # Tweezers should write out high all the time in loop
 # Will complete circuits with the piece input pins
 PIN_TWEEZERS = 2
@@ -8,20 +43,6 @@ PIN_SUCCESS_POS = 3
 # Negative pin should be pulled down, and will trigger
 # a message to Cloud indicating a successful piece removal
 PIN_SUCCESS_INPUT = 16
-# All pieces should be pulled down and set to input
-# They will create the circuits when touched by the tweezers
-PIN_PIECE_0 = 0
-PIN_PIECE_1 = 4
-PIN_PIECE_2 = 5
-PIN_PIECE_3 = 6
-PIN_PIECE_4 = 7
-PIN_PIECE_5 = 8
-PIN_PIECE_6 = 9
-PIN_PIECE_7 = 10
-PIN_PIECE_8 = 11
-PIN_PIECE_9 = 12
-PIN_PIECE_10 = 14
-PIN_PIECE_11 = 15
 # The mosfet gate is controlled by this pin
 PIN_BUZZER_CONTROL = 18
 
@@ -31,18 +52,18 @@ GPIO.setup(PIN_TWEEZERS, GPIO.OUT)
 GPIO.setup(PIN_SUCCESS_POS, GPIO.OUT)
 GPIO.setup(PIN_SUCCESS_INPUT, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-GPIO.setup(PIN_PIECE_0, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(PIN_PIECE_1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(PIN_PIECE_2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(PIN_PIECE_3, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(PIN_PIECE_4, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(PIN_PIECE_5, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(PIN_PIECE_6, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(PIN_PIECE_7, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(PIN_PIECE_8, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(PIN_PIECE_9, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(PIN_PIECE_10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(PIN_PIECE_11, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(PIN_PULLED_MUSCLE, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(PIN_SPARE_RIBS, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(PIN_WRITERS_CRAMP, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(PIN_CHARLIE_HORSE, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(PIN_BUTTERFLIES_IN_THE_STOMACH, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(PIN_BROKEN_HEART, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(PIN_WRENCHED_ANKLE, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(PIN_ADAMS_APPLE, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(PIN_FUNNY_BONE, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(PIN_WATER_ON_THE_KNEE, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(PIN_WISH_BONE, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(PIN_BREAD_BASKET, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 GPIO.setup(PIN_BUZZER_CONTROL, GPIO.OUT)
 
