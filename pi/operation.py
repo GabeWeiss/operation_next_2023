@@ -2,21 +2,21 @@ import RPi.GPIO as GPIO
 
 # TODO: need to map pieces to pins accurately. The following
 # are not accurate yet.
-PIN_PULLED_MUSCLE               = 0
-PIN_SPARE_RIBS                  = 4
-PIN_WRITERS_CRAMP               = 5
-PIN_CHARLIE_HORSE               = 6
-PIN_BUTTERFLIES_IN_THE_STOMACH  = 7
+PIN_ANKLE_TO_KNEE_BONE          = 9
+PIN_SPARE_RIBS                  = 15
+PIN_WRITERS_CRAMP               = 6
+PIN_CHARLIE_HORSE               = 11
+PIN_BUTTERFLIES_IN_THE_STOMACH  = 12
 PIN_BROKEN_HEART                = 8
-PIN_WRENCHED_ANKLE              = 9
-PIN_ADAMS_APPLE                 = 10
-PIN_FUNNY_BONE                  = 11
-PIN_WATER_ON_THE_KNEE           = 12
+PIN_WRENCHED_ANKLE              = 5
+PIN_ADAMS_APPLE                 = 7
+PIN_FUNNY_BONE                  = 4
+PIN_WATER_ON_THE_KNEE           = 0
 PIN_WISH_BONE                   = 14
-PIN_BREAD_BASKET                = 15
+PIN_BREAD_BASKET                = 10
 
 Piece_Names = {}
-Piece_Names[PIN_PULLED_MUSCLE]              = "Pulled Muscle"
+Piece_Names[PIN_ANKLE_TO_KNEE_BONE]         = "Ankle Bone is Connected to the Knee Bone"
 Piece_Names[PIN_SPARE_RIBS]                 = "Spare Ribs"
 Piece_Names[PIN_WRITERS_CRAMP]              = "Writer's Cramp"
 Piece_Names[PIN_CHARLIE_HORSE]              = "Charlie Horse"
@@ -52,7 +52,7 @@ GPIO.setup(PIN_TWEEZERS, GPIO.OUT)
 GPIO.setup(PIN_SUCCESS_POS, GPIO.OUT)
 GPIO.setup(PIN_SUCCESS_INPUT, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-GPIO.setup(PIN_PULLED_MUSCLE, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(PIN_ANKLE_TO_KNEE_BONE, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(PIN_SPARE_RIBS, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(PIN_WRITERS_CRAMP, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(PIN_CHARLIE_HORSE, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)

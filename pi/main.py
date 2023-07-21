@@ -65,12 +65,12 @@ try:
                 active_time = -1
                 continue
 
-        if (GPIO.input(operation.PIN_PULLED_MUSCLE)):
+        if (GPIO.input(operation.PIN_ANKLE_TO_KNEE_BONE)):
             operation.activate_buzzer()
             # Sanity check, if this happens, we're probably
             # in a bad state. Reset, log and continue
-            if active_pin != operation.PIN_PULLED_MUSCLE:
-                msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_PULLED_MUSCLE}"
+            if active_pin != operation.PIN_ANKLE_TO_KNEE_BONE:
+                msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_ANKLE_TO_KNEE_BONE}"
                 logging.CRITICAL(msg)
                 active_pin = -1
                 active_time = -1
@@ -79,9 +79,9 @@ try:
             # If we're here, it means this is the first time seeing
             # this pin trigger, so set the active pin and active time
             # so we don't repeat trigger a message
-            active_pin = operation.PIN_PULLED_MUSCLE
+            active_pin = operation.PIN_ANKLE_TO_KNEE_BONE
             active_time = cur_time
-            send_pubsub_msg(operation.PIN_PULLED_MUSCLE)
+            send_pubsub_msg(operation.PIN_ANKLE_TO_KNEE_BONE)
         elif (GPIO.input(operation.PIN_SPARE_RIBS)):
             operation.activate_buzzer()
             # Sanity check, if this happens, we're probably

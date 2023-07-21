@@ -29,7 +29,7 @@ try:
 
     sleep(1.0)
 
-    piece_pin = operation.PIN_PULLED_MUSCLE
+    piece_pin = operation.PIN_ANKLE_TO_KNEE_BONE
     piece_name = operation.pin_to_name(piece_pin)
     print(f"Confirm {piece_name} works by touching Tweezers to metal around piece.\nYou have 10 seconds to touch the metal before failure.")
     start_time = round(time.time() * 1000)
