@@ -3,6 +3,7 @@ import RPi.GPIO as GPIO
 # system libraries
 import datetime
 import logging
+import os
 import sys
 from time import sleep, time
 # local libraries
@@ -30,6 +31,11 @@ topic = publisher.topic_path('gweiss-simple-path', 'operation-test')
 MSG_NON_MATCHING_PINS = "The active pin doesn't match the triggered pin."
 
 def send_pubsub_msg(pin):
+    # If we don't want to be sending things to pubsub because we're just testing
+    # the system, then you can set this environment variable and everything else
+    # should work, but no messages will be sent.
+    if "OPERATION_NO_PUBSUB" in os.environ:
+        return
     global publisher
     global topic
     countdown = 15
