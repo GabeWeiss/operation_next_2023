@@ -3,6 +3,10 @@ import operation
 import sys
 from time import sleep, time
 
+def exit_clean(err):
+    GPIO.cleanup()
+    sys.exit(err)
+
 try:
     print("**** Starting Operation hardware validation test ****")
 
@@ -25,7 +29,7 @@ try:
             break
         if round(time.time() * 1000) > start_time + 10000:
             print("Did not receive signal from the success button within 10 seconds of test start.")
-            sys.exit(1)
+            exit_clean(1)
 
     sleep(1.0)
 
@@ -38,7 +42,7 @@ try:
             break
         if round(time.time() * 1000) > start_time + 10000:
             print(f"Did not receive signal from {piece_name} within 10 seconds of test start.")
-            sys.exit(1)
+            exit_clean(1)
 
     sleep(1.0)
 
@@ -51,7 +55,7 @@ try:
             break
         if round(time.time() * 1000) > start_time + 10000:
             print(f"Did not receive signal from {piece_name} within 10 seconds of test start.")
-            sys.exit(1)
+            exit_clean(1)
 
     sleep(1.0)
 
@@ -64,7 +68,7 @@ try:
             break
         if round(time.time() * 1000) > start_time + 10000:
             print(f"Did not receive signal from {piece_name} within 10 seconds of test start.")
-            sys.exit(1)
+            exit_clean(1)
 
     sleep(1.0)
 
@@ -77,7 +81,7 @@ try:
             break
         if round(time.time() * 1000) > start_time + 10000:
             print(f"Did not receive signal from {piece_name} within 10 seconds of test start.")
-            sys.exit(1)
+            exit_clean(1)
 
     sleep(1.0)
 
@@ -90,7 +94,7 @@ try:
             break
         if round(time.time() * 1000) > start_time + 10000:
             print(f"Did not receive signal from {piece_name} within 10 seconds of test start.")
-            sys.exit(1)
+            exit_clean(1)
 
     sleep(1.0)
 
@@ -103,7 +107,7 @@ try:
             break
         if round(time.time() * 1000) > start_time + 10000:
             print(f"Did not receive signal from {piece_name} within 10 seconds of test start.")
-            sys.exit(1)
+            exit_clean(1)
 
     sleep(1.0)
 
@@ -116,7 +120,7 @@ try:
             break
         if round(time.time() * 1000) > start_time + 10000:
             print(f"Did not receive signal from {piece_name} within 10 seconds of test start.")
-            sys.exit(1)
+            exit_clean(1)
 
     sleep(1.0)
 
@@ -129,7 +133,7 @@ try:
             break
         if round(time.time() * 1000) > start_time + 10000:
             print(f"Did not receive signal from {piece_name} within 10 seconds of test start.")
-            sys.exit(1)
+            exit_clean(1)
 
     sleep(1.0)
 
@@ -142,7 +146,7 @@ try:
             break
         if round(time.time() * 1000) > start_time + 10000:
             print(f"Did not receive signal from {piece_name} within 10 seconds of test start.")
-            sys.exit(1)
+            exit_clean(1)
 
     sleep(1.0)
 
@@ -155,7 +159,7 @@ try:
             break
         if round(time.time() * 1000) > start_time + 10000:
             print(f"Did not receive signal from {piece_name} within 10 seconds of test start.")
-            sys.exit(1)
+            exit_clean(1)
 
     sleep(1.0)
 
@@ -168,7 +172,7 @@ try:
             break
         if round(time.time() * 1000) > start_time + 10000:
             print(f"Did not receive signal from {piece_name} within 10 seconds of test start.")
-            sys.exit(1)
+            exit_clean(1)
 
     sleep(1.0)
 
@@ -181,13 +185,11 @@ try:
             break
         if round(time.time() * 1000) > start_time + 10000:
             print(f"Did not receive signal from {piece_name} within 10 seconds of test start.")
-            sys.exit(1)
+            exit_clean(1)
 
     sleep(1.0)
 
     print("All tests successfully passed.")
-    GPIO.cleanup()
-    sys.exit()
+    exit_clean(0)
 except:
-    GPIO.cleanup()
-    sys.exit(1)
+    exit_clean(1)
