@@ -295,3 +295,6 @@ try:
 except KeyboardInterrupt:
     print("Qutting")
     GPIO.cleanup()
+except Exception as e:
+    print(f"Exception: {e}")
+    GPIO.cleanup()
