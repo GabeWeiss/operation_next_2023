@@ -291,6 +291,8 @@ try:
             active_pin = operation.PIN_SUCCESS_INPUT
             active_time = cur_time
             send_pubsub_msg(operation.PIN_SUCCESS_INPUT)
+        else:
+            operation.deactivate_buzzer()
 
 except KeyboardInterrupt:
     print("Qutting")
