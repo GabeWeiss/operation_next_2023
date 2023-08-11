@@ -5,7 +5,7 @@ import datetime
 import logging
 import os
 import sys
-from time import sleep, time
+import time
 # local libraries
 import operation
 
@@ -46,7 +46,7 @@ def send_pubsub_msg(pin):
 # a few of them start high or floating, we want to be sure
 # we don't accidentally trigger any behaviors on startup
 # so we'll sleep for a second on start of the script JUST in case
-sleep(1.0)
+time.sleep(1.0)
 
 active_pin = -1
 active_time = -1
@@ -77,7 +77,7 @@ try:
             # in a bad state. Reset, log and continue
             if active_pin != operation.PIN_ANKLE_TO_KNEE_BONE:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_ANKLE_TO_KNEE_BONE}"
-                logging.CRITICAL(msg)
+                logger.critical(msg)
                 active_pin = -1
                 active_time = -1
                 continue
@@ -94,7 +94,7 @@ try:
             # in a bad state. Reset, log and continue
             if active_pin != operation.PIN_SPARE_RIBS:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_SPARE_RIBS}"
-                logging.CRITICAL(msg)
+                logger.critical(msg)
                 active_pin = -1
                 active_time = -1
                 continue
@@ -111,7 +111,7 @@ try:
             # in a bad state. Reset, log and continue
             if active_pin != operation.PIN_WRITERS_CRAMP:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_WRITERS_CRAMP}"
-                logging.CRITICAL(msg)
+                logger.critical(msg)
                 active_pin = -1
                 active_time = -1
                 continue
@@ -128,7 +128,7 @@ try:
             # in a bad state. Reset, log and continue
             if active_pin != operation.PIN_CHARLIE_HORSE:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_CHARLIE_HORSE}"
-                logging.CRITICAL(msg)
+                logger.critical(msg)
                 active_pin = -1
                 active_time = -1
                 continue
@@ -145,7 +145,7 @@ try:
             # in a bad state. Reset, log and continue
             if active_pin != operation.PIN_BUTTERFLIES_IN_THE_STOMACH:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_BUTTERFLIES_IN_THE_STOMACH}"
-                logging.CRITICAL(msg)
+                logger.critical(msg)
                 active_pin = -1
                 active_time = -1
                 continue
@@ -162,7 +162,7 @@ try:
             # in a bad state. Reset, log and continue
             if active_pin != operation.PIN_BROKEN_HEART:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_BROKEN_HEART}"
-                logging.CRITICAL(msg)
+                logger.critical(msg)
                 active_pin = -1
                 active_time = -1
                 continue
@@ -179,7 +179,7 @@ try:
             # in a bad state. Reset, log and continue
             if active_pin != operation.PIN_WRENCHED_ANKLE:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_WRENCHED_ANKLE}"
-                logging.CRITICAL(msg)
+                logger.critical(msg)
                 active_pin = -1
                 active_time = -1
                 continue
@@ -196,7 +196,7 @@ try:
             # in a bad state. Reset, log and continue
             if active_pin != operation.PIN_ADAMS_APPLE:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_ADAMS_APPLE}"
-                logging.CRITICAL(msg)
+                logger.critical(msg)
                 active_pin = -1
                 active_time = -1
                 continue
@@ -213,7 +213,7 @@ try:
             # in a bad state. Reset, log and continue
             if active_pin != operation.PIN_FUNNY_BONE:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_FUNNY_BONE}"
-                logging.CRITICAL(msg)
+                logger.critical(msg)
                 active_pin = -1
                 active_time = -1
                 continue
@@ -230,7 +230,7 @@ try:
             # in a bad state. Reset, log and continue
             if active_pin != operation.PIN_WATER_ON_THE_KNEE:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_WATER_ON_THE_KNEE}"
-                logging.CRITICAL(msg)
+                logger.critical(msg)
                 active_pin = -1
                 active_time = -1
                 continue
@@ -247,7 +247,7 @@ try:
             # in a bad state. Reset, log and continue
             if active_pin != operation.PIN_WISH_BONE:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_WISH_BONE}"
-                logging.CRITICAL(msg)
+                logger.critical(msg)
                 active_pin = -1
                 active_time = -1
                 continue
@@ -264,7 +264,7 @@ try:
             # in a bad state. Reset, log and continue
             if active_pin != operation.PIN_BREAD_BASKET:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_BREAD_BASKET}"
-                logging.CRITICAL(msg)
+                logger.critical(msg)
                 active_pin = -1
                 active_time = -1
                 continue
@@ -280,7 +280,7 @@ try:
             # in a bad state. Reset, log and continue
             if active_pin != operation.PIN_SUCCESS_INPUT:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_SUCCESS_INPUT}"
-                logging.CRITICAL(msg)
+                logger.critical(msg)
                 active_pin = -1
                 active_time = -1
                 continue
