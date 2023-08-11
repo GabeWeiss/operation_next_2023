@@ -23,9 +23,12 @@ logger.addHandler(file_handler)
 logger.setLevel(logging.DEBUG)
 
 # Set up pubsub globals
-publisher = pubsub_v1.PublisherClient()
-# TODO: Un-hardcode this topic
-topic = publisher.topic_path('gweiss-simple-path', 'operation-test')
+publisher = None
+topic = None
+if "OPERATION_NO_PUBSUB" not in os.environ:
+    publisher = pubsub_v1.PublisherClient()
+    # TODO: Un-hardcode this topic
+    topic = publisher.topic_path('gweiss-simple-path', 'operation-test')
 
 # Logging messages
 MSG_NON_MATCHING_PINS = "The active pin doesn't match the triggered pin."
