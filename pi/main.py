@@ -64,6 +64,14 @@ try:
         # test anything to be sure we're not sending spam
         # messages to Pub/Sub for the same "failure"
         if active_pin != -1:
+            # If we're not getting signal from our active pin, we should
+            # stop the motor regardless of our state of wanting to send
+            # the message downstream.
+            if not GPIO.input(active_pin):
+                operation.deactivate_buzzer()
+            else:
+                operation.activate_buzzer()
+
             if cur_time - trigger_reset_time < active_time:
                 continue
             else:
@@ -75,7 +83,9 @@ try:
             operation.activate_buzzer()
             # Sanity check, if this happens, we're probably
             # in a bad state. Reset, log and continue
-            if active_pin != operation.PIN_ANKLE_TO_KNEE_BONE:
+            # Have to test against -1 because the first time we hit
+            # an active pin, it's -1, and that's an acceptable state.
+            if active_pin != -1 and active_pin != operation.PIN_ANKLE_TO_KNEE_BONE:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_ANKLE_TO_KNEE_BONE}"
                 logger.critical(msg)
                 active_pin = -1
@@ -92,7 +102,9 @@ try:
             operation.activate_buzzer()
             # Sanity check, if this happens, we're probably
             # in a bad state. Reset, log and continue
-            if active_pin != operation.PIN_SPARE_RIBS:
+            # Have to test against -1 because the first time we hit
+            # an active pin, it's -1, and that's an acceptable state.
+            if active_pin != -1 and active_pin != operation.PIN_SPARE_RIBS:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_SPARE_RIBS}"
                 logger.critical(msg)
                 active_pin = -1
@@ -109,7 +121,9 @@ try:
             operation.activate_buzzer()
             # Sanity check, if this happens, we're probably
             # in a bad state. Reset, log and continue
-            if active_pin != operation.PIN_WRITERS_CRAMP:
+            # Have to test against -1 because the first time we hit
+            # an active pin, it's -1, and that's an acceptable state.
+            if active_pin != -1 and active_pin != operation.PIN_WRITERS_CRAMP:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_WRITERS_CRAMP}"
                 logger.critical(msg)
                 active_pin = -1
@@ -126,7 +140,9 @@ try:
             operation.activate_buzzer()
             # Sanity check, if this happens, we're probably
             # in a bad state. Reset, log and continue
-            if active_pin != operation.PIN_CHARLIE_HORSE:
+            # Have to test against -1 because the first time we hit
+            # an active pin, it's -1, and that's an acceptable state.
+            if active_pin != -1 and active_pin != operation.PIN_CHARLIE_HORSE:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_CHARLIE_HORSE}"
                 logger.critical(msg)
                 active_pin = -1
@@ -143,7 +159,9 @@ try:
             operation.activate_buzzer()
             # Sanity check, if this happens, we're probably
             # in a bad state. Reset, log and continue
-            if active_pin != operation.PIN_BUTTERFLIES_IN_THE_STOMACH:
+            # Have to test against -1 because the first time we hit
+            # an active pin, it's -1, and that's an acceptable state.
+            if active_pin != -1 and active_pin != operation.PIN_BUTTERFLIES_IN_THE_STOMACH:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_BUTTERFLIES_IN_THE_STOMACH}"
                 logger.critical(msg)
                 active_pin = -1
@@ -160,7 +178,9 @@ try:
             operation.activate_buzzer()
             # Sanity check, if this happens, we're probably
             # in a bad state. Reset, log and continue
-            if active_pin != operation.PIN_BROKEN_HEART:
+            # Have to test against -1 because the first time we hit
+            # an active pin, it's -1, and that's an acceptable state.
+            if active_pin != -1 and active_pin != operation.PIN_BROKEN_HEART:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_BROKEN_HEART}"
                 logger.critical(msg)
                 active_pin = -1
@@ -177,7 +197,9 @@ try:
             operation.activate_buzzer()
             # Sanity check, if this happens, we're probably
             # in a bad state. Reset, log and continue
-            if active_pin != operation.PIN_WRENCHED_ANKLE:
+            # Have to test against -1 because the first time we hit
+            # an active pin, it's -1, and that's an acceptable state.
+            if active_pin != -1 and active_pin != operation.PIN_WRENCHED_ANKLE:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_WRENCHED_ANKLE}"
                 logger.critical(msg)
                 active_pin = -1
@@ -194,7 +216,9 @@ try:
             operation.activate_buzzer()
             # Sanity check, if this happens, we're probably
             # in a bad state. Reset, log and continue
-            if active_pin != operation.PIN_ADAMS_APPLE:
+            # Have to test against -1 because the first time we hit
+            # an active pin, it's -1, and that's an acceptable state.
+            if active_pin != -1 and active_pin != operation.PIN_ADAMS_APPLE:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_ADAMS_APPLE}"
                 logger.critical(msg)
                 active_pin = -1
@@ -211,7 +235,9 @@ try:
             operation.activate_buzzer()
             # Sanity check, if this happens, we're probably
             # in a bad state. Reset, log and continue
-            if active_pin != operation.PIN_FUNNY_BONE:
+            # Have to test against -1 because the first time we hit
+            # an active pin, it's -1, and that's an acceptable state.
+            if active_pin != -1 and active_pin != operation.PIN_FUNNY_BONE:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_FUNNY_BONE}"
                 logger.critical(msg)
                 active_pin = -1
@@ -228,7 +254,9 @@ try:
             operation.activate_buzzer()
             # Sanity check, if this happens, we're probably
             # in a bad state. Reset, log and continue
-            if active_pin != operation.PIN_WATER_ON_THE_KNEE:
+            # Have to test against -1 because the first time we hit
+            # an active pin, it's -1, and that's an acceptable state.
+            if active_pin != -1 and active_pin != operation.PIN_WATER_ON_THE_KNEE:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_WATER_ON_THE_KNEE}"
                 logger.critical(msg)
                 active_pin = -1
@@ -245,7 +273,9 @@ try:
             operation.activate_buzzer()
             # Sanity check, if this happens, we're probably
             # in a bad state. Reset, log and continue
-            if active_pin != operation.PIN_WISH_BONE:
+            # Have to test against -1 because the first time we hit
+            # an active pin, it's -1, and that's an acceptable state.
+            if active_pin != -1 and active_pin != operation.PIN_WISH_BONE:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_WISH_BONE}"
                 logger.critical(msg)
                 active_pin = -1
@@ -262,7 +292,9 @@ try:
             operation.activate_buzzer()
             # Sanity check, if this happens, we're probably
             # in a bad state. Reset, log and continue
-            if active_pin != operation.PIN_BREAD_BASKET:
+            # Have to test against -1 because the first time we hit
+            # an active pin, it's -1, and that's an acceptable state.
+            if active_pin != -1 and active_pin != operation.PIN_BREAD_BASKET:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_BREAD_BASKET}"
                 logger.critical(msg)
                 active_pin = -1
@@ -278,7 +310,9 @@ try:
         elif (GPIO.input(operation.PIN_SUCCESS_INPUT)):
             # Sanity check, if this happens, we're probably
             # in a bad state. Reset, log and continue
-            if active_pin != operation.PIN_SUCCESS_INPUT:
+            # Have to test against -1 because the first time we hit
+            # an active pin, it's -1, and that's an acceptable state.
+            if active_pin != -1 and active_pin != operation.PIN_SUCCESS_INPUT:
                 msg = f"{MSG_NON_MATCHING_PINS}: Active: {active_pin}, Triggered: {operation.PIN_SUCCESS_INPUT}"
                 logger.critical(msg)
                 active_pin = -1
