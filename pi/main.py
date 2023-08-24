@@ -27,8 +27,15 @@ publisher = None
 topic = None
 if "OPERATION_NO_PUBSUB" not in os.environ:
     publisher = pubsub_v1.PublisherClient()
-    # TODO: Un-hardcode this topic
-    topic = publisher.topic_path('gweiss-simple-path', 'operation-test')
+    try:
+        project_name = os.environ['OPERATION_PROJECT']
+        topic_name = os.environ['OPERATION_TOPIC']
+
+        topic = publisher.topic_path(project_name, topic_name)
+    except:
+        print("Environment not set for OPERATION_PROJECT and OPERATION_TOPIC (pubsub topic)")
+        GPIO.cleanup()
+        sys.exit(1)
 
 # Logging messages
 MSG_NON_MATCHING_PINS = "The active pin doesn't match the triggered pin."
