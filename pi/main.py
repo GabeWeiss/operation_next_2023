@@ -26,7 +26,13 @@ logger.setLevel(logging.DEBUG)
 publisher = None
 topic = None
 if "OPERATION_NO_PUBSUB" not in os.environ:
-    publisher = pubsub_v1.PublisherClient()
+    # Ensure that we're instantly sending messages when we get one
+    batch_settings = pubsub_v1.types.BatchSettings(
+        max_messages = 1,
+        max_bytes = 1000024,
+        max_latency=1
+    )
+    publisher = pubsub_v1.PublisherClient(batch_settings)
     try:
         project_name = os.environ['OPERATION_PROJECT']
         topic_name = os.environ['OPERATION_TOPIC']
